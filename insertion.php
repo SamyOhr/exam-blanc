@@ -1,7 +1,7 @@
 <?php
 $NOM = $_POST['nom'];
 
-// Connexio à la base de données
+// Connexio à la bas de données
 $BASE = new PDO('mysql:host=localhost; dbname=id20205701_samy', 'id20205701_samyouicher', '/&*hX18M$A}2#QGr');
 $BASE->exec("SET CHARACTER SET utf8");
 
