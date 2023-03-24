@@ -4,13 +4,13 @@ nom.addEventListener("input", valider_nom);
 function valider_nom() {
   var nom_input = nom.value.trim(); // Enlever les espaces en début et fin de chaîne
   var est_de_bonne_longueur = valider_longueur(nom_input);
-  if (!est_de_bonne_longueur) { // Utilisation d'une négation au lieu de "est_de_bonne_longueur == false"
+  if (est_de_bonne_longueur == false) {
     desactiver_bouton_envoi(); // Utiliser une fonction séparée pour désactiver le bouton
     return;
   }
   
   var peut_inserer = valider_bdd(nom_input);
-  if (!peut_inserer) { // Utilisation d'une négation au lieu de "peut_inserer == false"
+  if (peut_inserer == false) {
     desactiver_bouton_envoi(); // Utiliser une fonction séparée pour désactiver le bouton
     return;
   }
@@ -37,16 +37,27 @@ function valider_bdd(nom){
   var reponse = JSON.parse(req.responseText);
   document.getElementById('response').innerHTML = reponse.message;
 
-  return reponse.est_valide;
+  return reponse.peut_inserer;
+}
+
+function envoi_serveur(){
+  var nom_input = document.getElementById('nom').value.trim(); // Enlever les espaces en début et fin de chaîne
+  var req= new XMLHttpRequest();
+  req.open("GET","insertion.php?nom="+nom_input,false); 
+  req.send(null); 
+  document.getElementById('response').innerHTML = req.responseText;
+  desactiver_bouton_envoi(); // Utiliser une fonction séparée pour désactiver le bouton
+  nom.value="";
 }
 
 function desactiver_bouton_envoi() {
-  var bouton_envoi = document.getElementById('envoyer');
-  bouton_envoi.disabled = true;
+  document.getElementById('bouton').disabled = true;
 }
 
 function activer_bouton_envoi() {
-  var bouton_envoi = document.getElementById('envoyer');
-  bouton_envoi.disabled = false;
+  document.getElementById('bouton').disabled = false;
 }
+
+var bouton = document.getElementById('bouton');
+bouton.addEventListener("click", envoi_serveur);
 
