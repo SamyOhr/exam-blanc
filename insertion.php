@@ -1,20 +1,22 @@
 <?php
-$NOM = $_POST['nom'];
+$NAME = $_GET['nom'];
 
-// Connexio à la base de données
+// conneexionn baseee de données 
 $BASE = new PDO('mysql:host=localhost; dbname=id20205701_samy', 'id20205701_samyouicher', '/&*hX18M$A}2#QGr');
-$BASE->exec("SET CHARACTER SET utf8");
-// Préparation de la requête d'insertion
-$sql = "INSERT INTO users VALUES(NULL,'$NOM')";
+
+$base->exec("SET CHARACTER SET utf8");
+
+$sql = "INSERT INTO personne VALUES(NULL,'$NAME')";
 
 $result = $base->query($sql);
 
 if ($result == false) { 
-    echo '<span style="color:red"><strong>'.$NOM.'</strong> n\'a pas pu être ajouté dans la BDD.</span>'; 
+    echo '<span style="color:red"><strong>'.$NAME.'</strong> n\'a pas pu être ajouté dans la BDD.</span>'; 
 } 
 else {
-    echo '<span style="color:green"><strong>'.$NOM.'</strong> a été ajouté dans la BDD.</span>';
+    echo '<span style="color:green"><strong>'.$NAME.'</strong> a été ajouté dans la BDD.</span>';
 }
     
 
 ?>
+
