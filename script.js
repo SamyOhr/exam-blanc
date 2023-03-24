@@ -41,7 +41,7 @@ function valider_bdd(nom){
 }
 
 function envoi_serveur(){
-  var nom_input = document.getElementById('nom').value.trim(); // Enlever les espaces en début et fin de chaîne
+  var nom_input = document.getElementById('nom').value.trim(); // Enleer les espaces en début et fin de chaîne
   var req= new XMLHttpRequest();
   req.open("GET","insertion.php?nom="+nom_input,false); 
   req.send(null); 
