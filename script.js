@@ -43,11 +43,13 @@ function valider_bdd(nom){
 function envoi_serveur(){
   var nom_input = document.getElementById('nom').value;
   var req= new XMLHttpRequest();
-  req.open("POST", "insertion.php", false);
-  req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  req.send("nom=" + nom_input);
+  req.open("GET","insertion.php?nom="+nom_input,false); 
   req.send(null); 
   document.getElementById('response').innerHTML = req.responseText;
   document.getElementById('bouton').disabled = true;
   nom.value="";
 }
+
+var bouton = document.getElementById('bouton');
+bouton.addEventListener("click", envoi_serveur);
+
