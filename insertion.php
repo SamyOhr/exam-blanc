@@ -5,7 +5,7 @@ $NOM = $_POST['nom'];
 $base = new PDO('mysql:host=localhost;dbname=id20205701_samy;charset=utf8', 'id20205701_samyouicher', '/&*hX18M$A}2#QGr');
 
 // Préparation de la requête d'insertion
-$sql = "INSERT INTO personne (nom) VALUES (:nom)";
+$sql = "INSERT INTO users (nom) VALUES (:nom)";
 $stmt = $base->prepare($sql);
 $stmt->bindParam(':nom', $NOM);
 
