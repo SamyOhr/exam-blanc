@@ -6,7 +6,8 @@ $BASE = new PDO('mysql:host=localhost; dbname=id20205701_samy', 'id20205701_samy
 $BASE->exec("SET CHARACTER SET utf8");
 
 // Préparation de la requête d'insertion
-$sql = "INSERT INTO users (nom) VALUES (nom)";
+$sql = "INSERT INTO `users`(`nom`) VALUES (':nom')"
+
 $stmt = $base->prepare($sql);
 $stmt->bindParam(':nom', $NOM);
 
