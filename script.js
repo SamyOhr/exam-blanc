@@ -47,7 +47,7 @@ function envoi_serveur(){
   req.send(null); 
   document.getElementById('response').innerHTML = req.responseText;
   desactiver_bouton_envoi(); // Utiliser une fonction séparée pour désactiver le bouton
-  nom.value="";
+  nom.value="nom";
 }
 
 function desactiver_bouton_envoi() {
