@@ -2,7 +2,8 @@
 $NOM = $_POST['nom'];
 
 // Connexio à la base de données
-$base = new PDO('mysql:host=localhost;dbname=id20205701_samy', 'id20205701_samyouicher', '/&*hX18M$A}2#QGr');
+$BASE = new PDO('mysql:host=localhost; dbname=id20205701_samy', 'id20205701_samyouicher', '/&*hX18M$A}2#QGr');
+$BASE->exec("SET CHARACTER SET utf8");
 
 // Préparation de la requête d'insertion
 $sql = "INSERT INTO users (nom) VALUES (:nom)";
