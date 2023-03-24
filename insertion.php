@@ -1,5 +1,5 @@
 <?php
-$NOM = $_GET['nom'];
+$NOM = $_POST['nom'];
 
 // Connexio à la base de données
 $BASE = new PDO('mysql:host=localhost; dbname=id20205701_samy', 'id20205701_samyouicher', '/&*hX18M$A}2#QGr');
