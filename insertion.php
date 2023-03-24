@@ -7,8 +7,6 @@ $BASE->exec("SET CHARACTER SET utf8");
 
 // Préparation de la requête d'insertion
 $sql = "INSERT INTO users (nom) VALUES(NULL,'$NOM')";
-$stmt = $base->prepare($sql);
-$stmt->bindParam(':nom', $NOM);
 
 // Exécution de la requête
 if ($stmt->execute()) {
