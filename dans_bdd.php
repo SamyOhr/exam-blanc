@@ -24,6 +24,8 @@ $REPONSE = array(
     'message' => $MESSAGE_RETOUR,
 );
 
+header('Content-Type: application/json');
 echo json_encode($REPONSE);
 ?>
+
 
