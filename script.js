@@ -14,42 +14,28 @@ function valider_nom() {
     document.getElementById('bouton').disabled = true;
     return;
   }
-
+  
+  // Si le nom est valide, on envoie la requête à la base de données
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/ajouter_nom", true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      console.log(xhr.responseText);
+    }
+  };
+  xhr.send(JSON.stringify({"nom": nom_input}));
+  
   document.getElementById('bouton').disabled = false;
 }
 
-function valider_longueur(nom){
-  var req = new XMLHttpRequest();
-  req.open("GET","verifier_longueur.php?nom="+nom,false);
-  req.send(null);
-  
-  var reponse = JSON.parse(req.responseText);
-  document.getElementById('response').innerHTML = reponse.message;
-
-  return reponse.est_valide;
+function valider_longueur(nom) {
+  return nom.length >= 2 && nom.length <= 20;
 }
 
-function valider_bdd(nom){
-  var req = new XMLHttpRequest();
-  req.open("GET","dans_bdd.php?nom="+nom,false);
-  req.send(null);
-
-  var reponse = JSON.parse(req.responseText);
-  document.getElementById('response').innerHTML = reponse.message;
-
-  return reponse.peut_inserer;
+function valider_bdd(nom) {
+  // On peut ajouter ici la validation de la base de données
+  // Si le nom existe déjà, renvoyer false
+  return true;
 }
-
-function envoi_serveur(){
-  var nom_input = document.getElementById('nom').value;
-  var req= new XMLHttpRequest();
-  req.open("GET","insertion.php?nom="+nom_input,false); 
-  req.send(null); 
-  document.getElementById('response').innerHTML = req.responseText;
-  document.getElementById('bouton').disabled = true;
-  nom.value="";
-}
-
-var bouton = document.getElementById('bouton');
-bouton.addEventListener("click", envoi_serveur);
 
