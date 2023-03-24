@@ -1,5 +1,5 @@
 <?php
-$NOM = $_GET['nom'];
+$NOM = $_POST['nom'];
 
 // Connexion à la base de données
 $base = new PDO('mysql:host=localhost;dbname=id20205701_samy;charset=utf8', 'id20205701_samyouicher', '/&*hX18M$A}2#QGr');
@@ -15,4 +15,5 @@ if ($stmt->execute()) {
 } else {
     echo '<span style="color:red"><strong>'.$NOM.'</strong> n\'a pas pu être ajouté dans la BDD.</span>';
 }
+
 ?>

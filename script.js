@@ -43,7 +43,9 @@ function valider_bdd(nom){
 function envoi_serveur(){
   var nom_input = document.getElementById('nom').value;
   var req= new XMLHttpRequest();
-  req.open("GET","insertion.php?nom="+nom_input,false); 
+  req.open("POST", "insertion.php", false);
+  req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  req.send("nom=" + nom_input);
   req.send(null); 
   document.getElementById('response').innerHTML = req.responseText;
   document.getElementById('bouton').disabled = true;
