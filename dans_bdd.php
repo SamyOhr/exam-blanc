@@ -1,15 +1,17 @@
 <?php
 $NOM = $_GET['nom'];
 
-// connexion base de données 
+// Connexion à la base de données 
 $BASE = new PDO('mysql:host=localhost; dbname=id20205701_samy', 'id20205701_samyouicher', '/&*hX18M$A}2#QGr');
 $BASE->exec("SET CHARACTER SET utf8");
 
-$SQL = "SELECT * FROM personne WHERE nom='$NOM'";
+// Requête pour vérifier si le nom est déjà dans la base de données
+$SQL = "SELECT * FROM users WHERE nom=:nom";
+$requete = $BASE->prepare($SQL);
+$requete->execute(array(':nom' => $NOM));
+$resultat = $requete->fetchAll(PDO::FETCH_ASSOC);
 
-$RESULT = $BASE->query($SQL);
-
-if ($RESULT->rowCount() == 0) {     
+if (count($resultat) == 0) {     
     $PEUT_INSERER = true;
     $MESSAGE_RETOUR = '<span style="color:green"><strong>'.$NOM.'</strong> : Ce pseudo est libre. </span>'; 
 } else {

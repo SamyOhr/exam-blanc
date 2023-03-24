@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Formulaire de recherche</title>
-  </head>
-  <body>
-    <h1>Formulaire de recherche</h1>
-    <p>Nom ? <input id="nom" /></p>
-    <p><button onclick="envoi_serveur()" id="bouton" disabled>Envoyer</button></p>
-    <div id="response"></div>
-    <script src="script.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire</title>
+</head>
+<body>
+  <h1>Formulaire d'inscription</h1>
+  <div id="response"></div>
+  <form>
+    <label for="nom">Nom d'utilisateur :</label>
+    <input type="text" id="nom" name="nom" required>
+    <br>
+    <button type="button" id="bouton" disabled>Envoyer</button>
+  </form>
+  <script src="script.js"></script>
+</body>
 </html>
