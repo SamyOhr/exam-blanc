@@ -1,7 +1,7 @@
 <?php
 $NOM = $_POST['nom'];
 
-// Connexion à la base de données
+// Connexio à la base de données
 $base = new PDO('mysql:host=localhost;dbname=id20205701_samy;charset=utf8', 'id20205701_samyouicher', '/&*hX18M$A}2#QGr');
 
 // Préparation de la requête d'insertion
